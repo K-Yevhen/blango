@@ -21,4 +21,11 @@
     {% endrow %}
 {% endif %}
 {% include "blog/post-comments.html" %}
+{% row %}
+    {% col %}
+        {% cache 3600 recent_posts post %}
+            {% recent_posts post %}
+        {% endcache %}
+    {% endcol %}
+{% endrow %}
 {% endblock %}
