@@ -64,6 +64,7 @@ class Dev(Configuration):
         'rest_framework',
         'rest_framework.authtoken',
         'rest_framework.permissions',
+        'drf_yasg',
     ]
 
     MIDDLEWARE = [
@@ -210,7 +211,7 @@ class Dev(Configuration):
       'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
       ]
       
-    INTERNAL_IPS = ["192.168.11.179"]
+    INTERNAL_IPS = ["192.168.10.226"]
     AUTH_USER_MODEL = "blango_auth.User"
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     ACCOUNT_ACTIVATION_DAYS = 7
@@ -226,10 +227,16 @@ class Dev(Configuration):
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-    ],
+      ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
-    ],
-}
+      ],
+    }
 
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }    
     
