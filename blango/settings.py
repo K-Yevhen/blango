@@ -67,6 +67,7 @@ class Dev(Configuration):
         'rest_framework.permissions',
         'drf_yasg',
         'django_filters',
+        'versatileimagefield',
     ]
 
     MIDDLEWARE = [
@@ -266,5 +267,9 @@ class Dev(Configuration):
     SIMPLE_JWT = {
         "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
         "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-    }    
+    }
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
+
+    
     
